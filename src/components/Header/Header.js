@@ -1,11 +1,12 @@
+import { Form } from "../Form/Form"
 
 
-const Header = () => {
+const Header = ({ addNewTodoFunc }) => {
 
 
     return (
         <header>
-            Header
+            <Form addNewTodoFunc={addNewTodoFunc} />
         </header>
     )
 }
