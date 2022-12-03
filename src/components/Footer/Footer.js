@@ -1,11 +1,17 @@
+import React from "react"
 
-
-export const Footer = () => {
+let Footer = ({ clearAllTodos }) => {
 
 
     return (
-        <footer>
-            Footer
+        <footer className="d-flex justify-content-center">
+            <button onClick={clearAllTodos} type="button" className="btn mx-2 btn-danger">Clear</button>
         </footer>
     )
+}
+
+Footer = React.memo(Footer)
+
+export {
+    Footer
 }
