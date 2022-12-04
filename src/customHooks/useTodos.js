@@ -3,7 +3,7 @@ import { TODOS_KEY_IN_LS } from "../utils/constsnts"
 
 
 
-export const UseTodos = () => {
+export const useTodos = () => {
     const [todos, setTdodos] = useState([])
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export const UseTodos = () => {
         localStorage.setItem(TODOS_KEY_IN_LS, JSON.stringify(todos))
     }, [todos])
 
-    const addNewTodo = (title) => {
+    const addNewTodo = useCallback((title) => {
         const newTodo = {
             title,
             id: Date.now(),
@@ -27,7 +27,7 @@ export const UseTodos = () => {
 
 
         setTdodos(prev => [newTodo, ...prev])
-    }
+    },[])
 
     const clearAllTodos = useCallback(() => {
         setTdodos([])

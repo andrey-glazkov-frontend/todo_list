@@ -3,22 +3,26 @@ import './App.css';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
+import { TodosContextProvider } from './contexts/TodosContext';
 
 
-import { UseTodos } from './customHooks/useTodos'
+
 
 function App() {
-  const { todos, addNewTodo, deleteTodo, changeTodoStatus, clearAllTodos } = UseTodos()
+ 
 
 
   return (
+    <TodosContextProvider>
     <div className='container py-5'>
-      <Header addNewTodoFunc={addNewTodo} />
+
+      <Header /*addNewTodoFunc={addNewTodo}*/ />
       <hr />
-      <Main changeTodoStatus={changeTodoStatus} deleteTodo={deleteTodo} todos={todos} />
+      <Main /*changeTodoStatus={changeTodoStatus} deleteTodo={deleteTodo} todos={todos}*/ />
       <hr />
-      <Footer clearAllTodos={clearAllTodos} />
+      <Footer /*clearAllTodos={clearAllTodos}*/ />
     </div>
+    </TodosContextProvider>
   );
 }
 

@@ -1,8 +1,12 @@
+import React from 'react'
+import { useTodosHelpersContext } from '../../contexts/TodosContext'
 import mainStyles from './styles.module.css'
 
 
-export const TodoItem = ({ id, title, status, inx, deleteTodo, changeTodoStatus }) => {
 
+export const TodoItem = ({ id, title, status, inx /*{deleteTodo, changeTodoStatus*/ }) => {
+
+    const { deleteTodo, changeTodoStatus} = useTodosHelpersContext()
 
     return (
         <li className="list-group-item d-flex justify-content-between">
