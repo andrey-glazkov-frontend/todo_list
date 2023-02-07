@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is my realization of todo-list on react
+im using :
+*react
+*sass
+*eslint
+
 ## Available Scripts
 
 In the project directory, you can run:
