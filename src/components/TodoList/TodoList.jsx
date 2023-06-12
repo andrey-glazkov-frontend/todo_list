@@ -1,18 +1,43 @@
+import { useEffect, useState } from 'react'
+import { useTodosContext } from '../../contexts/TodosContext'
+import { TodoItem } from '../TodoItem/TodoItem'
 
-import {  useTodosContext } from "../../contexts/TodosContext"
-import { TodoItem } from "../TodoItem/TodoItem"
+export function TodoList(/* { todos, deleteTodo, changeTodoStatus } */) {
+  const todos = useTodosContext()
 
-export function TodoList(/*{ todos, deleteTodo, changeTodoStatus }*/)  {
+  const [filtred, setFiltred] = useState(todos)
 
-const todos = useTodosContext()
+  useEffect(() => {
+    setFiltred(todos)
+  }, [todos])
 
-    return (
-        <ul className="list-group" >
+  function todoFilter(status) {
+    if (status === 'all') {
+      setFiltred(todos)
+    } else {
+      const newTodo = [...todos].filter((item) => item.status === status)
+      setFiltred(newTodo)
+    }
+  }
 
-            {
-
-                todos.map((todo, i) => <TodoItem key={todo.id} {...todo} inx={i} /*deleteTodo={deleteTodo} changeTodoStatus={changeTodoStatus}*/ />)
-            }
-        </ul>
-    )
+  return (
+    <div>
+      <div className="text-center" style={{ marginBottom: '1rem' }}>
+        <button type="button" className="btn mx-1" onClick={() => todoFilter('all')}>All</button>
+        <button type="button" className="btn mx-1" onClick={() => todoFilter(true)}>Done</button>
+        <button type="button" className="btn mx-1" onClick={() => todoFilter(false)}>Undone</button>
+      </div>
+      <ul className="list-group">
+        {
+      filtred.map((todo, i) => (
+        <TodoItem
+          key={todo.id}
+          {...todo}
+          inx={i}
+        />
+      ))
+    }
+      </ul>
+    </div>
+  )
 }

@@ -1,5 +1,5 @@
-import React, { useContext, useMemo } from "react"
-import { useTodos } from "../customHooks/useTodos"
+import React, { useContext, useMemo } from 'react'
+import { useTodos } from '../customHooks/useTodos'
 
 export const TodosContext = React.createContext()
 export const TodosContextHelpers = React.createContext()
@@ -11,6 +11,7 @@ export function TodosContextProvider({ children }) {
     deleteTodo,
     changeTodoStatus,
     clearAllTodos,
+
   } = useTodos()
 
   const todosContextHelpersValue = useMemo(() => ({
@@ -18,6 +19,7 @@ export function TodosContextProvider({ children }) {
     deleteTodo,
     changeTodoStatus,
     clearAllTodos,
+
   }), [])
 
   return (

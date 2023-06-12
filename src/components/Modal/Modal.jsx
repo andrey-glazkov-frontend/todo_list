@@ -22,7 +22,7 @@ function ModalContent({ children, closeHandler }) {
   return (
     <div className={modalStyles.modalContent}>
       <button onClick={closeHandler} type="submit" className="btn btn-primary">
-        close
+        &times;
       </button>
       {children}
     </div>
